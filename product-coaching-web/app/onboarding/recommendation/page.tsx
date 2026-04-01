@@ -54,8 +54,7 @@ export default function RecommendationPage() {
   };
 
   const handleCustomize = () => {
-    // In a real app, this would open a customization modal or page
-    alert("Customization feature coming soon!");
+    router.push("/courses");
   };
 
   return (
@@ -132,7 +131,7 @@ export default function RecommendationPage() {
 
         <div className="mt-6 text-center">
           <button
-            onClick={() => window.location.href = "/dashboard"}
+            onClick={() => router.push("/dashboard")}
             className="text-sm text-muted-foreground hover:text-foreground underline"
           >
             Skip for now, I'll explore on my own

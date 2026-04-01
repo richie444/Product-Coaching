@@ -6,15 +6,17 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { CheckCircle2, Lock, CreditCard, ShieldCheck } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export default function CheckoutPage() {
   const [paymentMethod, setPaymentMethod] = useState<"onetime" | "installment">("onetime");
   const [promoCode, setPromoCode] = useState("");
+  const router = useRouter();
 
   const handleCheckout = (e: React.FormEvent) => {
     e.preventDefault();
     // Process payment
-    window.location.href = "/checkout/success";
+    router.push("/checkout/success");
   };
 
   return (
@@ -35,7 +37,7 @@ export default function CheckoutPage() {
               <CardHeader>
                 <CardTitle>Account Information</CardTitle>
                 <CardDescription>
-                  Already have an account? <a href="/login" className="text-primary hover:underline">Sign in</a>
+                  Already have an account? <button onClick={() => router.push("/login")} className="text-primary hover:underline">Sign in</button>
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">

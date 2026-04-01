@@ -4,15 +4,24 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+// import { createUserWithEmailAndPassword } from "firebase/auth";
+// import { auth } from "@/lib/firebase";
+import { useRouter } from "next/navigation";
 
 export default function SignUpPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const router = useRouter();
 
-  const handleEmailSignup = (e: React.FormEvent) => {
+  const handleEmailSignup = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle email signup
-    window.location.href = "/onboarding/welcome";
+    try {
+      // await createUserWithEmailAndPassword(auth, email, password);
+      // Mock signup
+      router.push("/onboarding/welcome");
+    } catch (error: any) {
+      alert("Error signing up: " + error.message);
+    }
   };
 
   return (

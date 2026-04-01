@@ -87,7 +87,7 @@ export default function CareerStagePage() {
         </div>
 
         <div className="flex justify-between items-center">
-          <Button variant="ghost" onClick={() => window.history.back()}>
+          <Button variant="ghost" onClick={() => router.back()}>
             Back
           </Button>
           <Button 

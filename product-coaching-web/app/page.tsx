@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { BookOpen, Users, Award, TrendingUp, CheckCircle2, Clock } from "lucide-react";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -12,11 +13,11 @@ export default function Home() {
           <div className="flex items-center justify-between">
             <h1 className="text-2xl font-bold">Product Coaching</h1>
             <div className="flex items-center gap-4">
-              <a href="/dashboard" className="text-sm hover:underline">
+              <Link href="/dashboard" className="text-sm hover:underline">
                 Dashboard
-              </a>
+              </Link>
               <Button asChild>
-                <a href="/onboarding/welcome">Get Started</a>
+                <Link href="/onboarding/welcome">Get Started</Link>
               </Button>
             </div>
           </div>
@@ -39,10 +40,10 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" asChild>
-                <a href="/onboarding/welcome">Start Learning Free</a>
+                <Link href="/onboarding/welcome">Start Learning Free</Link>
               </Button>
               <Button size="lg" variant="outline" asChild>
-                <a href="/courses">Explore Courses</a>
+                <Link href="/courses">Explore Courses</Link>
               </Button>
             </div>
           </div>

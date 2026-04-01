@@ -4,18 +4,12 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import { 
-  BookOpen, 
-  Clock, 
-  Award, 
-  Users,
-  Star,
-  CheckCircle2,
-  Play,
-  Download
-} from "lucide-react";
+import { useRouter } from "next/navigation";
+import { Star, Users, Clock, CheckCircle2, Play, BookOpen, Download, Award } from "lucide-react";
 
 export default function CourseDetailPage() {
+  const router = useRouter();
+  
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
@@ -24,8 +18,8 @@ export default function CourseDetailPage() {
           <div className="flex items-center justify-between">
             <h1 className="text-2xl font-bold">Product Coaching</h1>
             <div className="flex items-center gap-4">
-              <Button variant="ghost" asChild>
-                <a href="/dashboard">Dashboard</a>
+              <Button variant="ghost" onClick={() => router.push("/dashboard")}>
+                Dashboard
               </Button>
               <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center font-semibold text-primary">
                 JD
@@ -102,81 +96,42 @@ export default function CourseDetailPage() {
                 <CardTitle>Course Content</CardTitle>
                 <CardDescription>8 modules • 42 lessons • 12.5 hours total</CardDescription>
               </CardHeader>
-              <CardContent className="space-y-3">
+              <CardContent className="space-y-4">
                 {[
-                  {
-                    title: "Introduction to Product Discovery",
-                    lessons: 4,
-                    duration: "45 min",
-                    completed: false,
-                  },
-                  {
-                    title: "User Research Fundamentals",
-                    lessons: 6,
-                    duration: "1.5 hrs",
-                    completed: false,
-                  },
-                  {
-                    title: "Conducting User Interviews",
-                    lessons: 5,
-                    duration: "1.2 hrs",
-                    completed: false,
-                  },
-                  {
-                    title: "Data Analysis & Synthesis",
-                    lessons: 7,
-                    duration: "2 hrs",
-                    completed: false,
-                  },
-                  {
-                    title: "Creating User Personas",
-                    lessons: 4,
-                    duration: "1 hr",
-                    completed: false,
-                  },
-                  {
-                    title: "Journey Mapping & Service Design",
-                    lessons: 6,
-                    duration: "1.5 hrs",
-                    completed: false,
-                  },
-                  {
-                    title: "Experiment Design & Validation",
-                    lessons: 6,
-                    duration: "2 hrs",
-                    completed: false,
-                  },
-                  {
-                    title: "Presenting Research Findings",
-                    lessons: 4,
-                    duration: "1.5 hrs",
-                    completed: false,
-                  },
+                   { title: "Introduction to Product Discovery", lessons: 4, duration: "45 min" },
+                   { title: "User Research Fundamentals", lessons: 6, duration: "1.5 hrs" },
+                   { title: "Conducting User Interviews", lessons: 5, duration: "1.2 hrs" },
+                   { title: "Data Analysis & Synthesis", lessons: 5, duration: "1.5 hrs" },
+                   { title: "Ideation & Prototyping", lessons: 6, duration: "2.0 hrs" },
+                   { title: "Usability Testing", lessons: 4, duration: "1.0 hrs" },
+                   { title: "Stakeholder Management", lessons: 5, duration: "1.5 hrs" },
+                   { title: "Career Growth & Portfolio", lessons: 7, duration: "2.5 hrs" },
                 ].map((module, index) => (
-                  <div
-                    key={index}
-                    className="border rounded-lg p-4 hover:bg-accent/50 transition-colors"
-                  >
-                    <div className="flex items-center justify-between">
-                      <div className="flex-1">
-                        <div className="flex items-center gap-3 mb-2">
-                          <span className="font-semibold text-primary">
-                            Module {index + 1}
-                          </span>
-                          <h4 className="font-semibold">{module.title}</h4>
-                        </div>
-                        <div className="flex gap-4 text-sm text-muted-foreground">
-                          <span>{module.lessons} lessons</span>
-                          <span>•</span>
-                          <span>{module.duration}</span>
-                        </div>
+                  <div key={index} className="flex items-center justify-between p-4 border rounded-lg hover:bg-muted/50 transition-colors cursor-pointer group">
+                    <div className="flex items-center gap-4">
+                      <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-sm">
+                        {index + 1}
                       </div>
-                      <Play className="w-5 h-5 text-muted-foreground" />
+                      <div>
+                        <h4 className="font-semibold text-sm group-hover:text-primary transition-colors">{module.title}</h4>
+                        <p className="text-xs text-muted-foreground">{module.lessons} lessons</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                      <Play className="w-4 h-4" />
+                      <span>{module.duration}</span>
                     </div>
                   </div>
                 ))}
               </CardContent>
             </Card>
+
+
+
+
+
+
+
 
             {/* Instructor */}
             <Card>
@@ -238,10 +193,8 @@ export default function CourseDetailPage() {
                 </div>
 
                 <div className="space-y-3 mb-6">
-                  <Button className="w-full" size="lg" asChild>
-                    <a href="/checkout?course=product-discovery">
-                      Enroll Now
-                    </a>
+                  <Button className="w-full" size="lg" onClick={() => router.push("/checkout?course=product-discovery")}>
+                    Enroll Now
                   </Button>
                   <Button variant="outline" className="w-full">
                     Try Free Preview

@@ -1,10 +1,13 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 import { Card, CardContent } from "@/components/ui/card";
-import { CheckCircle2, Calendar, Play } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { CheckCircle2, Play, Calendar } from "lucide-react";
 
 export default function CheckoutSuccessPage() {
+  const router = useRouter();
+  
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
       <Card className="w-full max-w-2xl">
@@ -62,17 +65,13 @@ export default function CheckoutSuccessPage() {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" asChild>
-              <a href="/dashboard">
-                <Play className="w-4 h-4 mr-2" />
-                Start Learning Now
-              </a>
+            <Button size="lg" onClick={() => router.push("/dashboard")}>
+              <Play className="w-4 h-4 mr-2" />
+              Start Learning Now
             </Button>
-            <Button size="lg" variant="outline" asChild>
-              <a href="/dashboard">
-                <Calendar className="w-4 h-4 mr-2" />
-                View Dashboard
-              </a>
+            <Button size="lg" variant="outline" onClick={() => router.push("/dashboard")}>
+              <Calendar className="w-4 h-4 mr-2" />
+              View Dashboard
             </Button>
           </div>
 
